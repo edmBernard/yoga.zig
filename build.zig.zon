@@ -1,6 +1,7 @@
 .{
     .name = "yoga",
     .version = "3.2.1",
+    .minimum_zig_version = "0.15.1",
     .dependencies = .{
         .yoga_cpp = .{
             .url = "https://github.com/facebook/yoga/archive/refs/tags/v3.2.1.tar.gz",

@@ -1,18 +1,26 @@
 const std = @import("std");
 
 pub fn build(b: *std.Build) void {
+    const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
+
     const upstream = b.dependency("yoga_cpp", .{});
-    const lib = b.addStaticLibrary(.{
-        .name = "yogacore",
-        .target = b.standardTargetOptions(.{}),
-        .optimize = b.standardOptimizeOption(.{}),
+
+    const yoga_mod = b.createModule(.{
+        .target = target,
+        .optimize = optimize,
+        .link_libc = true,
+        .link_libcpp = true,
     });
-    lib.linkLibC();
-    lib.linkLibCpp();
 
-    lib.addIncludePath(upstream.path(""));
+    const lib = b.addLibrary(.{
+        .name = "yogacore",
+        .root_module = yoga_mod,
+    });
 
-    lib.addCSourceFiles(.{
+    yoga_mod.addIncludePath(upstream.path(""));
+
+    yoga_mod.addCSourceFiles(.{
         .root = upstream.path(""),
         .files = source_files,
         .flags = &.{
