@@ -4,7 +4,7 @@ A [Zig](https://ziglang.org) package for [Yoga](https://www.yogalayout.dev/) (_A
 
 ## Usage
 
-Requires Zig 0.15.2 or 0.16.0-dev (master).
+Requires Zig 0.16.0.
 
 ```sh
 zig fetch --save git+https://github.com/sobeston/yoga.zig.git#3.2.1

@@ -1,6 +1,8 @@
 .{
-    .name = "tests",
+    .name = .tests,
     .version = "0.0.0",
+    .fingerprint = 0x1260fc5e494fae9e,
+    .minimum_zig_version = "0.16.0",
     .dependencies = .{
         .yoga = .{
             .path = "..",
